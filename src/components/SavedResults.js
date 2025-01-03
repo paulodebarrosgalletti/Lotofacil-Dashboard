@@ -35,7 +35,9 @@ function SavedResults() {
       ) : (
         savedResults.map((result, index) => (
           <div key={result.id} className="saved-result">
-            <h2>Sorteio: {result.draw_id}</h2>
+            <h2>
+              Consulta {result.id} - Sorteio: {result.draw_id}
+            </h2>
             <div className="numbers-display">
               {result.results.map((game, gameIndex) => (
                 <div key={gameIndex} className="game-result">
@@ -45,8 +47,8 @@ function SavedResults() {
                       <span
                         key={num}
                         className={`circle ${
-                          game?.game?.includes(num) // Verifica se `game` e `game.game` estão definidos
-                            ? result?.winningNumbers?.includes(num) // Verifica se `winningNumbers` está definido
+                          game?.game?.includes(num)
+                            ? result?.winningNumbers?.includes(num)
                               ? 'green'
                               : 'red'
                             : ''

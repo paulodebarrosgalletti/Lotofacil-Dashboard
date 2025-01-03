@@ -5,6 +5,7 @@ import Home from './components/Home';
 import AllDraws from './components/AllDraws';
 import BetGenerator from './components/BetGenerator';
 import CheckResults from './components/CheckResults';
+import SavedResults from './components/SavedResults';
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/all-draws" element={<AllDraws />} />
             <Route path="/bet-generator" element={<BetGenerator />} />
             <Route path="/check-results" element={<CheckResults />} />
+            <Route path="/saved-results" element={<SavedResults />} />
           </Routes>
         </div>
       </div>

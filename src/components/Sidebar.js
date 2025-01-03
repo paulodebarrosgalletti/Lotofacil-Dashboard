@@ -20,6 +20,9 @@ function Sidebar() {
         <li>
           <NavLink to="/check-results" activeclassname="active">Verificar Jogos</NavLink>
         </li>
+        <li>
+          <NavLink to="/saved-results" activeclassname="active">Jogos Salvos</NavLink>
+        </li>
       </ul>
     </div>
   );

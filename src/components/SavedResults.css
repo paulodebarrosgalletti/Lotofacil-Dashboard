@@ -1,0 +1,90 @@
+.saved-results {
+    padding: 20px;
+  }
+  
+  .saved-result {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .game-result {
+    margin-bottom: 10px;
+  }
+  
+  .game-numbers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .circle {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .circle.green {
+    background-color: green;
+  }
+  
+  .circle.red {
+    background-color: red;
+  }
+  .saved-results {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .saved-result {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .numbers-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  
+  .circle {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: white;
+  }
+  
+  .circle.green {
+    background-color: green;
+  }
+  
+  .circle.red {
+    background-color: red;
+  }
+  
+  .delete-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .delete-button:hover {
+    background-color: #ff1a1a;
+  }
+  

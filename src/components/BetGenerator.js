@@ -7,7 +7,7 @@ function BetGenerator() {
   const [generatedGames, setGeneratedGames] = useState([]);
   const [allNumbersFrequency, setAllNumbersFrequency] = useState([]);
   const [savedResults, setSavedResults] = useState([]);
-  const [selectedSaved, setSelectedSaved] = useState('');
+  const [selectedSavedResult, setSelectedSavedResult] = useState('');
 
   useEffect(() => {
     fetchDraws();
@@ -42,25 +42,22 @@ function BetGenerator() {
 
   const generateGames = (algorithm) => {
     const games = [];
-    const uniqueGames = new Set(); // Para garantir que os jogos sejam únicos
-  
-    // Obter os números mais ou menos frequentes
+    const uniqueGames = new Set(); // Garantir que os jogos sejam únicos
+
+    // Ordenar números mais ou menos frequentes
     const sortedByFrequency = allNumbersFrequency
       .map((count, index) => ({ number: index + 1, count }))
       .sort((a, b) => (algorithm === 'mostFrequent' ? b.count - a.count : a.count - b.count));
-  
-    let attempts = 0; // Limitar tentativas para evitar loops infinitos
-  
+
+    let attempts = 0;
+
     while (games.length < numGames && attempts < 1000) {
       let game = [];
-  
+
       if (algorithm === 'mostFrequent' || algorithm === 'leastFrequent') {
-        // Adicionar os números mais/menos frequentes
         const selectedNumbers = sortedByFrequency.slice(0, 10).map((entry) => entry.number);
-  
         game = [...selectedNumbers];
-  
-        // Adicionar números aleatórios para completar os 15
+
         while (game.length < 15) {
           const randomNumber = Math.floor(Math.random() * 25) + 1;
           if (!game.includes(randomNumber)) {
@@ -68,47 +65,50 @@ function BetGenerator() {
           }
         }
       } else if (algorithm === 'random') {
-        // Geração totalmente aleatória
         while (game.length < 15) {
           const num = Math.floor(Math.random() * 25) + 1;
           if (!game.includes(num)) game.push(num);
         }
       } else if (algorithm === 'basedOnSaved') {
-        if (!selectedSaved) {
+        if (!selectedSavedResult) {
           alert('Selecione uma consulta salva antes de gerar jogos!');
           return;
         }
-        const savedGame = savedResults.find((result) => result.id === parseInt(selectedSaved, 10));
+
+        const savedGame = savedResults.find(
+          (result) => result.id === parseInt(selectedSavedResult, 10)
+        );
         if (savedGame) {
           const winningNumbers = savedGame.winningNumbers || [];
           game = [...winningNumbers];
+
           while (game.length < 15) {
-            const num = Math.floor(Math.random() * 25) + 1;
-            if (!game.includes(num)) game.push(num);
+            const randomNumber = Math.floor(Math.random() * 25) + 1;
+            if (!game.includes(randomNumber)) {
+              game.push(randomNumber);
+            }
           }
         }
       }
-  
-      game.sort((a, b) => a - b); // Ordenar os números do jogo em ordem crescente
+
+      game.sort((a, b) => a - b);
       const gameKey = game.join(',');
-  
-      // Garantir que o jogo seja único
+
       if (!uniqueGames.has(gameKey)) {
         uniqueGames.add(gameKey);
         games.push(game);
       }
-  
-      attempts++; // Incrementar as tentativas
+
+      attempts++;
     }
-  
+
     if (attempts >= 1000) {
       console.warn('Número de tentativas excedido. Algoritmo interrompido.');
     }
-  
+
     setGeneratedGames(games);
   };
-  
-  
+
   return (
     <div className="bet-generator">
       <h1>Gerador de Apostas</h1>
@@ -133,8 +133,8 @@ function BetGenerator() {
       <div className="form-group">
         <label>Escolha uma consulta salva:</label>
         <select
-          value={selectedSaved}
-          onChange={(e) => setSelectedSaved(e.target.value)}
+          value={selectedSavedResult}
+          onChange={(e) => setSelectedSavedResult(e.target.value)}
         >
           <option value="">Selecione</option>
           {savedResults.map((result) => (
@@ -142,6 +142,7 @@ function BetGenerator() {
               Consulta {result.id}
             </option>
           ))}
+          <option value="all">Todas as Consultas</option>
         </select>
         <button onClick={() => generateGames('basedOnSaved')}>Gerar Baseado em Jogos Salvos</button>
       </div>

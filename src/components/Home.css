@@ -1,0 +1,38 @@
+.home {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .home h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .last-draw {
+    margin-top: 20px;
+  }
+  
+  .last-draw h2 {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  
+  .numbers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .number-circle {
+    background-color: #007bff;
+    color: white;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 14px;
+  }
+  

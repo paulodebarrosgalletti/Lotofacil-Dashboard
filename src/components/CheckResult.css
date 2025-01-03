@@ -33,3 +33,29 @@
 .circle.red {
   background-color: red;
 }
+
+.check-results .game-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.check-results .circle {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  color: white;
+  font-size: 14px;
+}
+
+.check-results .circle.green {
+  background-color: green;
+}
+
+.check-results .circle.red {
+  background-color: red;
+}

@@ -1,0 +1,35 @@
+.check-results {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.winning-numbers {
+  display: grid;
+  grid-template-columns: repeat(5, 40px); /* 5 bolinhas por linha */
+  margin-left: 10px;
+  gap: 5px;
+  justify-content: center;
+}
+
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+.circle.green {
+  background-color: green;
+}
+
+.circle.red {
+  background-color: red;
+}

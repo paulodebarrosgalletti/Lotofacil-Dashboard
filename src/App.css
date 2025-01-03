@@ -1,0 +1,31 @@
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  position: fixed;
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.content {
+  margin-left: 220px;
+  padding: 20px;
+}
